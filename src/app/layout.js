@@ -1,0 +1,1 @@
+export const metadata={title:'Pekařství Ludvík & Mistrík',description:'Objednávkový systém'};export default function RootLayout({children}){return(<html lang='cs'><body style={{fontFamily:'system-ui, -apple-system, Segoe UI, Roboto, sans-serif',background:'#FAF4EE',color:'#333'}}>{children}</body></html>)}

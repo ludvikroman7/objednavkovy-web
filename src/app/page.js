@@ -1,0 +1,1 @@
+export default function Home(){return(<div style={{maxWidth:960,margin:'40px auto',padding:16}}><h1 style={{fontWeight:800,fontSize:28}}>Pekařství Ludvík & Mistrík</h1><ul><li><a href='/order'>Objednat</a></li><li><a href='/admin'>Administrace</a></li></ul></div>)}
