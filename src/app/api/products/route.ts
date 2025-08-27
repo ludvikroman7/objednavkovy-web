@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 // src/app/api/products/route.ts
 import { prisma } from "@/lib/prisma";
 
