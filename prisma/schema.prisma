@@ -36,16 +36,13 @@ model Product {
 model Order {
   id            String   @id @default(cuid())
   createdAt     DateTime @default(now())
-  pickupDate    DateTime
-
-  storeId       String
-  store         Store    @relation(fields: [storeId], references: [id])
-
-  slot          Int
+  pickupDate    DateTime?              // volitelné
+  storeId       String?                // volitelné
+  store         Store?   @relation(fields: [storeId], references: [id])
+  slot          Int?                   // volitelné
   customerName  String
   customerPhone String
   status        String   @default("new")
-
   items         OrderItem[]
 }
 
