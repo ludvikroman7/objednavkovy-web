@@ -1,27 +1,109 @@
-
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "sqlite"; url = env("DATABASE_URL") }
-
-model Store { id String @id name String address String card Boolean @default(true) orders Order[] }
-model Product {
-  id String @id
-  name String
-  priceCzk Float
-  unit String
-  weight_g Int?
-  img String?
-  description String?
-  allergens String[]
-  categories String[]
-  availableDays String[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+generator client {
+  provider = "prisma-client-js"
 }
-model Order { id String @id @default(cuid()) createdAt DateTime @default(now()) pickupDate DateTime storeId String store Store @relation(fields: [storeId], references: [id]) slot Int customerName String customerPhone String status String @default("new") items OrderItem[] }
-model OrderItem { id String @id @default(cuid()) orderId String order Order @relation(fields: [orderId], references: [id]) productId String? name String qty Int priceCzk Float }
-model News { id String @id @default(cuid()) title String body String? img String? createdAt DateTime @default(now()) }
-model Banner { id Int @id @default(1) enabled Boolean @default(true) width Int @default(1200) height Int @default(280) img String? link String? }
-model Employee { id String @id @default(cuid()) name String pinHash String active Boolean @default(true) purchases EmpPurchase[] }
-model EmpPurchase { id String @id @default(cuid()) employeeId String employee Employee @relation(fields: [employeeId], references: [id]) createdAt DateTime @default(now()) total Float paid Boolean @default(false) paidAt DateTime? items Json }
-model SlotClosure { id String @id @default(cuid()) date DateTime storeId String store Store @relation(fields: [storeId], references: [id]) slot Int closedAt DateTime @default(now()) }
-model BlacklistNumber { phone String @id }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id      String  @id
+  name    String
+  address String
+  card    Boolean @default(true)
+
+  orders  Order[]
+}
+
+model Product {
+  id          String   @id
+  name        String
+  priceCzk    Float
+  unit        String
+  weight_g    Int?
+  img         String?
+  description String?
+  allergens   String[]
+  categories  String[]
+  availableDays String[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  pickupDate    DateTime
+
+  storeId       String
+  store         Store    @relation(fields: [storeId], references: [id])
+
+  slot          Int
+  customerName  String
+  customerPhone String
+  status        String   @default("new")
+
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+
+  productId String?
+  name      String
+  qty       Int
+  priceCzk  Float
+}
+
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  body      String?
+  img       String?
+  createdAt DateTime @default(now())
+}
+
+model Banner {
+  id      Int     @id @default(1)
+  enabled Boolean @default(true)
+  width   Int     @default(1200)
+  height  Int     @default(280)
+  img     String?
+  link    String?
+}
+
+model Employee {
+  id        String        @id @default(cuid())
+  name      String
+  pinHash   String
+  active    Boolean       @default(true)
+  purchases EmpPurchase[]
+}
+
+model EmpPurchase {
+  id          String    @id @default(cuid())
+  employeeId  String
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime  @default(now())
+  total       Float
+  paid        Boolean   @default(false)
+  paidAt      DateTime?
+  items       Json
+}
+
+model SlotClosure {
+  id        String   @id @default(cuid())
+  date      DateTime
+  storeId   String
+  store     Store    @relation(fields: [storeId], references: [id])
+  slot      Int
+  closedAt  DateTime @default(now())
+}
+
+model BlacklistNumber {
+  phone String @id
+}
