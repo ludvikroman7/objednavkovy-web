@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 export const dynamic = 'force-dynamic';
 // src/app/api/order/route.ts
 import { prisma } from "@/lib/prisma";
