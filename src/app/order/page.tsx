@@ -600,3 +600,38 @@ return (
               <strong>Celkem:</strong> <span style={{ color: UI.primaryDark }}>{CZK(total)}</span>
             </div>
             <button
+               onClick={handleSubmit}
+              style={ctaBtn}
+              disabled={
+                effectiveSlot === 'closed' ||
+                (dow === 6 && !slot1StillAllowed(date)) ||
+                items.length === 0 ||
+                !name.trim() ||
+                !phone.trim() ||
+                !agree
+              }
+            >
+              Odeslat objednávku
+            </button>
+          </div>
+        </section>
+
+        {/* Shrnutí košíku */}
+        <section style={{ ...card }}>
+          <h2 style={sectionTitle}>Souhrn</h2>
+          {items.length === 0 ? (
+            <div style={hint}>Košík je prázdný.</div>
+          ) : (
+            <ul style={{ margin: 0, paddingLeft: 16 }}>
+              {items.map((i) => (
+                <li key={i.id}>
+                  {i.name} × {i.qty} — {CZK(i.price * i.qty)}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </main>
+    </div>
+  );
+}
