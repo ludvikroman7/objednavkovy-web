@@ -335,7 +335,8 @@ export default function OrderPage() {
 
   const info = pickupWindow(date, (forcedSlot ?? selectedSlot) as 1 | 2);
   const slot1Allowed = slot1StillAllowed(date);
-
+  
+  // --- konec logiky, odtud JSX ---
   return (
     <div style={pageWrap}>
       {/* HLAVIČKA */}
@@ -347,9 +348,9 @@ export default function OrderPage() {
           </div>
         </div>
       </div>
-+    </div>
-+  );
-+}
+    </div>
+  );
+}
       <main style={container}>
         {/* Pobočka + datum + slot */}
         <section style={{ ...card, marginBottom: 16 }}>
