@@ -33,18 +33,30 @@ model Product {
   updatedAt   DateTime @updatedAt
 }
 
+enum OrderStatus {
+  new
+  confirmed
+  baking
+  ready
+  picked
+  cancelled
+}
+
 model Order {
-  id            String   @id @default(cuid())
-  createdAt     DateTime @default(now())
-  pickupDate    DateTime?              // volitelné
-  storeId       String?                // volitelné
-  store         Store?   @relation(fields: [storeId], references: [id])
-  slot          Int?                   // volitelné
+  id            String      @id @default(cuid())
+  orderNumber   Int         @unique @default(autoincrement()) // pořadové číslo
+  createdAt     DateTime    @default(now())
+  pickupDate    DateTime?
+  storeId       String?
+  store         Store?      @relation(fields: [storeId], references: [id])
+  slot          Int?
   customerName  String
   customerPhone String
-  status        String   @default("new")
+  status        OrderStatus @default(new)
+  totalCzk      Float       @default(0)                        // součet položek
   items         OrderItem[]
 }
+
 
 model OrderItem {
   id        String  @id @default(cuid())
