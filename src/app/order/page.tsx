@@ -162,7 +162,7 @@ const PRODUCTS: Product[] = [
   {
     id: 'chleb-ruzenin',
     name: 'Růženín – chléb s červenou řepou',
-    price: 69,
+    price: 49,
     unit: 'ks',
     weight_g: 800,
     description: 'Pšenično-žitný chléb s jemnou chutí řepy.',
@@ -224,7 +224,7 @@ function pickupWindow(iso: string, slot: 1 | 2) {
   if (dow === 0) return { closed: true, text: 'V neděli je zavřeno.' };
   if (dow === 6) return { closed: false, slot: 1 as const, text: 'Sobota: výdej 8:00–12:00 (příjem do pátku 18:00).' };
   if (slot === 1)
-    return { closed: false, slot: 1 as const, text: 'Slot 1: výdej 8:00–14:00 (příjem do 22:00 předchozího dne).' };
+    return { closed: false, slot: 1 as const, text: 'Slot 1: výdej 8:00–18:00 (příjem do 22:00 předchozího dne).' };
   return { closed: false, slot: 2 as const, text: 'Slot 2: výdej 15:00–18:00 (příjem do 8:00 daného dne).' };
 }
 
