@@ -332,7 +332,7 @@ export default function OrderPage() {
     setPhone('');
     setAgree(false);
 }
-+
+
 const info = pickupWindow(date, (forcedSlot ?? selectedSlot) as 1 | 2);
 const slot1Allowed = slot1StillAllowed(date);
 
