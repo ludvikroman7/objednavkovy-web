@@ -347,7 +347,9 @@ export default function OrderPage() {
           </div>
         </div>
       </div>
-
++    </div>
++  );
++}
       <main style={container}>
         {/* Pobočka + datum + slot */}
         <section style={{ ...card, marginBottom: 16 }}>
@@ -391,12 +393,12 @@ export default function OrderPage() {
               />
               {dow === 0 && (
                 <div style={{ ...hint, color: '#DC2626' }}>
-                  V neděli je zavřeno. Zvolte jiný termín.
+                  V neděli je zavřeno. Zvolte, prosím, jiný termín.
                 </div>
               )}
               {dow === 6 && (
                 <div style={hint}>
-                  Sobota: výdej 8:00–12:00, příjem do pátku 18:00.
+                  Sobota: výdej 8:00–12:00, příjem objednávek do pátku 18:00 hodin.
                 </div>
               )}
             </div>
@@ -414,9 +416,9 @@ export default function OrderPage() {
                   onChange={(e) => setSelectedSlot(e.target.value === '1' ? 1 : 2)}
                 >
                   <option value="1" disabled={!slot1Allowed}>
-                    Slot 1 (8–14) {slot1Allowed ? '' : '— po termínu'}
+                    Slot 1 (8:00–18:00) {slot1Allowed ? '' : '— po termínu'}
                   </option>
-                  <option value="2">Slot 2 (15–18)</option>
+                  <option value="2">Slot 2 (15:00–18:00)</option>
                 </select>
               )}
               <div style={hint} aria-live="polite">
