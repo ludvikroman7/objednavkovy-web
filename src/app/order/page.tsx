@@ -348,9 +348,7 @@ export default function OrderPage() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+
       <main style={container}>
         {/* Pobočka + datum + slot */}
         <section style={{ ...card, marginBottom: 16 }}>
