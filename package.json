@@ -7,15 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "vercel-build": "next build"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "5.15.0",
     "next": "14.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "lucide-react": "0.263.1"
+    "@prisma/client": "5.15.0",
+    "lucide-react": "^0.344.0"
   },
   "devDependencies": {
     "prisma": "5.15.0",
