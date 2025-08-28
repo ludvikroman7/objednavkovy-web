@@ -7,7 +7,6 @@ import { prisma } from '@/lib/prisma';
 export default async function AdminPage() {
   const orders = await prisma.order.findMany({
     orderBy: { createdAt: 'desc' },
-    take: 20,
     include: { items: true },
   });
 
