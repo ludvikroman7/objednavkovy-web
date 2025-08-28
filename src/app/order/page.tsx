@@ -331,13 +331,14 @@ export default function OrderPage() {
     setName('');
     setPhone('');
     setAgree(false);
+}
++
+const info = pickupWindow(date, (forcedSlot ?? selectedSlot) as 1 | 2);
+const slot1Allowed = slot1StillAllowed(date);
 
-  const info = pickupWindow(date, (forcedSlot ?? selectedSlot) as 1 | 2);
-  const slot1Allowed = slot1StillAllowed(date);
-  
-  // --- konec logiky, odtud JSX ---
-  return (
-    <div style={pageWrap}>
+// --- konec logiky, odtud JSX ---
+return (
+  <div style={pageWrap}>
       {/* HLAVIČKA */}
       <div style={{ background: UI.primaryDark, color: '#fff' }}>
         <div style={{ ...container, padding: '18px 16px' }}>
